@@ -1,0 +1,25 @@
+﻿@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>My Calculator</h1>
+
+<form asp-action="Calculate" asp-controller="Calculator">
+	<input value="@ViewBag.SoHang01" type="number" name="SoHang01" placeholder="Number 1" required step="0.01" />
+	<select name="ToanTu">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+	</select>
+	<input value="@ViewBag.SoHang02" type="number" name="SoHang02" placeholder="Number 1" required />
+	<button type="submit">=</button>
+	<span class="text-danger">@ViewBag.Result</span>
+</form>
+@section Scripts {
+	<script>
+		$(document).ready(function(){
+			$("select[name='ToanTu']").val("@ViewBag.ToanTu");
+		});
+	</script>
+}
