@@ -8,5 +8,11 @@ namespace Buoi05_Validation.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Register()
+        {
+            return View("Index");
+        }
     }
 }

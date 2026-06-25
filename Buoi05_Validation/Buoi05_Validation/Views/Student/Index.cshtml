@@ -2,7 +2,7 @@
 	ViewData["Title"] = "Index";
 }
 
-<form id="register" method="post">
+<form id="register" method="post" asp-action="Register">
 
 	<h2 class="text-center text-danger">
 
@@ -163,16 +163,29 @@
 	<!--Khối (section) Scripts-->
 	<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
 	<script>
+		function kiemTraGmail(value, element) {
+			return this.optional(element) || /^.+@@gmail\.com$/.test(value);
+		});
+		$.validator.addMethod("gmail", kiemTraGmail, "Phải là gmail.com");
+
 		$("#register").validate({
 			rules:{
 				MaSV: {required:true, minlength: 6},
 				HoTen: {HoTen: true},
-				NgaySinh: {date: true},
-				Email: {email: true, required: true},
-				XacNhanEmail: {required: true, equalTo: "[name='Email']"}
+				NgaySinh: {dateISO: true},
+				Email: {email: true, required: true, gmail: true},
+				XacNhanEmail: {required: true, equalTo: "[name='Email']"},
+				SoTaiKhoan:{},
+				Hinh: {extension: "gif,jpg,jpeg,png"},
+				Diem: {number, range: [0.0, 10.0]},
+				HeSo: {digits, min: 1},
+				ThongTinThem: {maxlength: 255}
 			},
 			messages:{
 				MaSV: {required:"Phải nhập", minlength: "Tối thiểu 6 kí tự"},
+				Hinh: {extension: "Chỉ chấp hình dạng gif,jpg,jpeg,png"},
+				Diem: {number: "Phải là số", range: "Phải từ 0.0 đến 10.0"}},
+				HeSo: {digits: "Phải là số nguyên", min: "Phải >= 1"}}
 			}
 		});
 	</script>
