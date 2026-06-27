@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	@await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h5>@ViewBag.Title</h5>
+		</header>
+		<div class="row bg-info m-0" style="min-height:500px;">
+			<aside class="col-md-3">
+				<!-- Sidebar content -->
+				@{
+					var categories = new List<CategoryModel>
+					{
+						new CategoryModel { Id = 1, Name = "Phone" },
+						new CategoryModel { Id = 2, Name = "Tablet" },
+						new CategoryModel { Id = 3, Name = "Macbook" }
+					};
+				}
+				@await Html.PartialAsync("_CategoryMenu", categories)
+
+			</aside>
+			<main class="col-md-9">
+				<!-- Main content -->
+				@RenderBody()
+			</main>
+		</div>
+		<footer class="text-center mt-4 mb-4 bg-info">
+			<p>&copy; 2026 - Buoi07_Layout</p>
+		</footer>
+	</div>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
