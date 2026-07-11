@@ -1,0 +1,28 @@
+﻿@model List<HangHoaVM>
+@{
+	ViewData["Title"] = "Search";
+}
+
+<h1>Tìm kiếm</h1>
+<form asp-action="Search">
+	Tìm theo tên: <input name="Keyword" /><br />
+	Giá từ: <input type="number" name="FromPrice" />
+	đến: <input type="number" name="ToPrice" />
+	<button>Tìm kiếm</button>
+</form>
+@if (Model != null)
+{
+    if(Model.Count == 0)
+	{
+		<div class="text-danger">Không tìm thấy kết quả nào.</div>
+	}
+	else
+	{
+		@foreach (var item in Model)
+		{
+			<div>
+				@item.TenHh - @item.DonGia
+			</div>
+		}
+	}
+}
