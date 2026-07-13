@@ -1,0 +1,6 @@
+@Buoi13_APIOnly_HostAddress = http://localhost:5124
+
+GET {{Buoi13_APIOnly_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
