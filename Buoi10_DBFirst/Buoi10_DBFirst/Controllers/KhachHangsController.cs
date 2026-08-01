@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Buoi10_DBFirst.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Buoi10_DBFirst.Controllers
 {
+    [Authorize]
     public class KhachHangsController : Controller
     {
         private readonly MyeStoreContext _context;
